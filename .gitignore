@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# secret_key
+secret_key*
+
+# idea
+.idea/
+
+#sass
+node_modules/
+package*.json
+scss/
