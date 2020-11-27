@@ -139,3 +139,6 @@ secret_key*
 node_modules/
 package*.json
 scss/
+
+#help_files
+_help/
