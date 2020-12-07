@@ -1,0 +1,42 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block banner_header %}
+    <h1>{{ content.name }}</h1>
+{% endblock banner_header %}
+
+
+{% block banner %}
+    <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+{% endblock banner %}
+
+{% block navigation-list %}
+    <ul class="navigation-list">
+        {% for service in services_list %}
+            <li>
+                <a href="{% url 'advisory_services:service' service.department.slug service.pk service.slug %}">{{ service.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock navigation-list %}
+
+{% block content %}
+
+    <div>{{ content.content | safe | linebreaks }}</div>
+    {% block team %}
+        <ul class="navigation-list">
+            {% for team_member in team_members_list %}
+                <li>
+                    <a href="">
+                        {% if team_member.academic_title %}
+                            {{ team_member.academic_title }}
+                        {% endif %}
+
+                        {{ team_member.name }},
+                        {{ team_member.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock team %}
+{% endblock content %}

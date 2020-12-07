@@ -1,6 +1,7 @@
 from django.db import models
 from advisory_commons.models import AdvisoryBaseModel
 from django.utils.translation import gettext_lazy as __
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -22,13 +23,12 @@ class Specialization(models.Model):
 class TeamMember(AdvisoryBaseModel):
     first_name = models.CharField(max_length=64, verbose_name=__('first_name'))
     last_name = models.CharField(max_length=64, verbose_name=__('last_name'))
+    slug = models.SlugField(max_length=255, verbose_name=__('slug'))
     academic_title = models.CharField(max_length=32, verbose_name=__('academic_title'), null=True, blank=True)
     title = models.CharField(max_length=255, verbose_name=__('title'))
     email = models.EmailField(unique=True)
     phone = models.IntegerField(unique=True, verbose_name=__('phone'))
-    specializations = models.ManyToManyField(Specialization, related_name=__('team_members'), verbose_name=__('specializations'))
-
-    REQUIRED_FIELDS = ['email', 'phone']
+    specializations = models.ManyToManyField(Specialization, related_name=__('team_members'), verbose_name=__('specializations'), null=True, blank=True)
 
     @property
     def name(self):
@@ -36,6 +36,10 @@ class TeamMember(AdvisoryBaseModel):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify('{} {}'.format(self.name, self.title))
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = __('Team Member')

@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {{ content.name }} {% endblock title %}</title>
+    <meta name="description" content="{% block meta-description %}{% endblock meta-description %}">
+
+</head>
+<body class="{{ content.name }}">
+    <section class="wrap-banner">
+        <div class="container">
+            <div class="left-sidebar">
+                {% block banner_header %}
+                {% endblock banner_header %}
+            </div>
+            <div class="main-content">
+                {% block banner %}
+                {% endblock banner %}
+            </div>
+        </div>
+    </section>
+    <section class="wrap-content">
+        <div class="container">
+            <div class="left-sidebar">
+                {% block navigation-list %}
+                {% endblock navigation-list %}
+            </div>
+            <div class="main-content">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>
