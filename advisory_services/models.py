@@ -15,7 +15,7 @@ class Department(AdvisoryBaseModel):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(downcode(self.name))
         super().save(*args, **kwargs)
 
     class Meta:

@@ -24,19 +24,33 @@
 
     <div>{{ content.content | safe | linebreaks }}</div>
     {% block team %}
-        <ul class="navigation-list">
-            {% for team_member in team_members_list %}
-                <li>
-                    <a href="">
-                        {% if team_member.academic_title %}
-                            {{ team_member.academic_title }}
-                        {% endif %}
+        <ul class="navigation-list team-list">
+            {% if team_members_list %}
+                {% for team_member in team_members_list %}
+                    <li>
+                        <a href="">
+                            {% if team_member.academic_title %}
+                                {{ team_member.academic_title }}
+                            {% endif %}
 
-                        {{ team_member.name }},
-                        {{ team_member.title }}
-                    </a>
-                </li>
-            {% endfor %}
+                            {{ team_member.name }} <br />
+                            {{ team_member.title }}
+
+                        </a>
+                        {% if team_member.specializations.all %}
+                            <div class="tag-items">
+                                {% for specialization in team_member.specializations.all %}
+                                    <span class="tag-item">
+                                        <strong>
+                                            {{ specialization.name }}
+                                        </strong>
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% endif %}
         </ul>
     {% endblock team %}
 {% endblock content %}

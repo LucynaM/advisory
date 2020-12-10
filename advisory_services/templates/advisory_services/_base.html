@@ -10,31 +10,51 @@
     <title>{% block title %} {{ content.name }} {% endblock title %}</title>
     <meta name="description" content="{% block meta-description %}{% endblock meta-description %}">
 
+    <link rel="stylesheet" href="{% static 'advisory_services/css/style_base.css' %}">
+
 </head>
-<body class="{{ content.name }}">
+<body class="{{ content.slug }}">
     <section class="wrap-banner">
         <div class="container">
-            <div class="left-sidebar">
-                {% block banner_header %}
-                {% endblock banner_header %}
-            </div>
-            <div class="main-content">
-                {% block banner %}
-                {% endblock banner %}
+            <div class="fix-wrapper">
+                <aside class="left-sidebar">
+                    <div class="content-holder left">
+                        <div class="header-holder">
+                            {% block banner_header %}
+                            {% endblock banner_header %}
+                        </div>
+                    </div>
+                </aside>
+                <div class="main-content">
+                    <div class="content-holder right img-holder">
+                        {% block banner %}
+                        {% endblock banner %}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <section class="wrap-content">
         <div class="container">
-            <div class="left-sidebar">
-                {% block navigation-list %}
-                {% endblock navigation-list %}
-            </div>
-            <div class="main-content">
-                {% block content %}
-                {% endblock content %}
+            <div class="fix-wrapper">
+                <aside class="left-sidebar">
+                    <div class="content-holder left">
+                        {% block navigation-list %}
+                        {% endblock navigation-list %}
+                    </div>
+                </aside>
+                <div class="main-content">
+                    <div class="content-holder right">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+     <!--Scripts - start -->
+    <script src="{% static 'advisory_services/js/vendors/jquery-3.5.1.min.js'%}"></script>
+    <script src="{% static 'advisory_services/js/app.js' %}"></script>
+    <!--Scripts - stop -->
 </body>
 </html>
