@@ -2,18 +2,26 @@
 {% load static %}
 
 {% block banner_header %}
-    <h1>{{ content.name }}</h1>
+    {% if view_type == "service" %}
+        <div><a href="{% url 'advisory_services:department' content.department.pk content.department.slug %}">{{ content.department.name }}</a></div>
+    {% else %}
+        <h1>{{ content.name }}</h1>
+    {% endif %}
 {% endblock banner_header %}
 
 
 {% block banner %}
-    <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+    {% if is_mobile %}
+        <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}">
+    {% else %}
+        <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+    {% endif %}
 {% endblock banner %}
 
 {% block navigation-list %}
     <ul class="navigation-list">
         {% for service in services_list %}
-            <li>
+            <li class="{% if view_type == 'service' and content.pk == service.pk %} active {% endif %}">
                 <a href="{% url 'advisory_services:service' service.department.slug service.pk service.slug %}">{{ service.name }}</a>
             </li>
         {% endfor %}
@@ -21,8 +29,24 @@
 {% endblock navigation-list %}
 
 {% block content %}
+    {% if view_type == "service" %}
+        <h1> {{ content.name }} </h1>
+    {% endif %}
 
     <div>{{ content.content | safe | linebreaks }}</div>
+
+    {% if view_type == "service" and content.tags.all %}
+         <div class="tag-items">
+            {% for tag in content.tags.all %}
+                <span class="tag-item">
+                    <strong>
+                        {{ tag.name }}
+                    </strong>
+                </span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     {% block team %}
         <ul class="navigation-list team-list">
             {% if team_members_list %}
@@ -53,4 +77,5 @@
             {% endif %}
         </ul>
     {% endblock team %}
+
 {% endblock content %}

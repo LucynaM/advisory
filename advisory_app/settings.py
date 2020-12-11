@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #my_app
     'advisory_commons',
     'advisory_team',
+    'advisory_events',
     'advisory_services',
 ]
 

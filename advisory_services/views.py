@@ -7,21 +7,22 @@ from .models import Department, Service
 class DepartmentPage(View):
     def get(self, request, pk, slug):
 
-        department = Department.objects.get(pk=pk, slug=slug)
+        content = Department.objects.get(pk=pk, slug=slug)
         is_mobile = request.user_agent.is_mobile
         is_tablet = request.user_agent.is_tablet
         is_touch_capable = request.user_agent.is_touch_capable
-
+        view_type = 'department'
         services_list = Service.objects.filter(department=pk)
-        team_members_list = department.team_members.all()
+        team_members_list = content.team_members.all()
 
 
 
         ctx = {
-            'content': department,
+            'content': content,
             'services_list': services_list,
             'team_members_list': team_members_list,
             'is_mobile': is_mobile,
+            'view_type': view_type
         }
 
         return render(request, 'advisory_services/base_page.html', ctx)
@@ -30,14 +31,22 @@ class DepartmentPage(View):
 class ServicePage(View):
     def get(self, request, dept_slug, pk, slug):
 
-        service = Service.objects.get(pk=pk, slug=slug)
-        services_list = Service.objects.filter(department=service.department)
-        team_members_list = service.team_members.all()
+        content = Service.objects.get(pk=pk, slug=slug)
+        services_list = Service.objects.filter(department=content.department)
+        team_members_list = content.team_members.all()
+
+        is_mobile = request.user_agent.is_mobile
+        is_tablet = request.user_agent.is_tablet
+        is_touch_capable = request.user_agent.is_touch_capable
+        view_type = 'service'
 
         ctx = {
-            'content': service,
+            'content': content,
             'services_list': services_list,
             'team_members_list': team_members_list,
+            'is_mobile': is_mobile,
+            'view_type': view_type
+
         }
 
         return render(request, 'advisory_services/base_page.html', ctx)
