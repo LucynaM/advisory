@@ -2,6 +2,7 @@ from django.db import models
 from advisory_commons.models import AdvisoryBaseModel
 from django.utils.translation import gettext_lazy as __
 from django.utils.text import slugify
+from downcode import downcode
 
 
 # Create your models here.
@@ -38,7 +39,7 @@ class TeamMember(AdvisoryBaseModel):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify('{} {}'.format(self.name, self.title))
+        self.slug = slugify(downcode('{} {}'.format(self.name, self.title)))
         super().save(*args, **kwargs)
 
     class Meta:

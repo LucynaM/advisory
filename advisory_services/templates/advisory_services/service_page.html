@@ -1,0 +1,57 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block banner_header %}
+    <div><a href="{% url 'advisory_services:department' content.department.pk content.department.slug %}">{{ content.department.name }}</a></div>
+{% endblock banner_header %}
+
+
+{% block content-navigation-list %}
+    <ul class="navigation-list">
+        {% for list_item in content_navigation_list %}
+            <li class="{% if content.pk == list_item.pk %} active {% endif %}">
+                <a href="{% url 'advisory_services:service' list_item.department.pk list_item.department.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content-navigation-list %}
+
+{% block content %}
+    <h1> {{ content.name }} </h1>
+
+    <div>{{ content.content | safe | linebreaks }}</div>
+
+    {% if content.tags.all %}
+         <div class="tag-items">
+            {% for tag in content.tags.all %}
+                <span class="tag-item">
+                    <strong>
+                        {{ tag.name }}
+                    </strong>
+                </span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block team %}
+        <ul class="navigation-list team-list">
+            {% if team_members_list %}
+                {% for team_member in team_members_list %}
+                    <li>
+                        <a href="">
+                            {% if team_member.academic_title %}
+                                {{ team_member.academic_title }}
+                            {% endif %}
+
+                            {{ team_member.name }} <br />
+                            {{ team_member.title }}
+                        </a> <br />
+                        tel: <a class="team-contact-info" href="tel:{{ team_member.phone }}">{{ team_member.phone }}</a><br />
+                        email: <a class="team-contact-info" href="mailto:{{ team_member.email }}">{{ team_member.email }}</a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    {% endblock team %}
+
+{% endblock content %}

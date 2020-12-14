@@ -7,7 +7,7 @@ from .models import Department, Service
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'get_team_members')
-    fields = ('name', 'content', 'photo_desktop', 'photo_mobile', 'team_members')
+    fields = ('name', 'content', 'photo_desktop', 'photo_mobile', 'team_members', 'events')
 
     @staticmethod
     def get_team_members(obj):

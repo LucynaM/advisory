@@ -17,14 +17,16 @@ Including another URLconf
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.utils.translation import gettext_lazy as __
 
-from .views import DepartmentPage, ServicePage
+from .views import DepartmentPage, ServicePage, EventPage
 
 app_name = 'advisory_services'
 
 urlpatterns = [
     path('<int:pk>/<slug:slug>/', DepartmentPage.as_view(), name='department'),
-    path('<slug:dept_slug>/<int:pk>/<slug:slug>/', ServicePage.as_view(), name='service'),
+    path(__('services') + '/<int:dept_pk>/<slug:dept_slug>/<int:pk>/<slug:slug>/', ServicePage.as_view(), name='service'),
+    path(__('events') + '/<int:dept_pk>/<slug:dept_slug>/<int:pk>/<slug:slug>/', EventPage.as_view(), name='event'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

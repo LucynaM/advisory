@@ -1,0 +1,38 @@
+{% extends './_base.html' %}
+{% load static %}
+
+{% block banner_header %}
+    <div><a href="{% url 'advisory_services:department' department.pk department.slug %}">{{ department.name }}</a></div>
+{% endblock banner_header %}
+
+
+{% block content-navigation-list %}
+    <ul class="navigation-list">
+        {% for list_item in content_navigation_list %}
+            <li class="{% if content.pk == list_item.pk %} active {% endif %}">
+                <a href="{% url 'advisory_services:event' department.pk department.slug list_item.pk list_item.slug %}">{{ list_item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content-navigation-list %}
+
+{% block content %}
+
+    <h1> {{ content.title }} </h1>
+
+
+    <div>{{ content.content | safe | linebreaks }}</div>
+
+    {% if content.tags.all %}
+         <div class="tag-items">
+            {% for tag in content.tags.all %}
+                <span class="tag-item">
+                    <strong>
+                        {{ tag.name }}
+                    </strong>
+                </span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock content %}

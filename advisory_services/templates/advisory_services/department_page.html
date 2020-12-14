@@ -2,54 +2,23 @@
 {% load static %}
 
 {% block banner_header %}
-    {% if view_type == "service" %}
-        <div><a href="{% url 'advisory_services:department' content.department.pk content.department.slug %}">{{ content.department.name }}</a></div>
-    {% else %}
-        <h1>{{ content.name }}</h1>
-    {% endif %}
+   <h1>{{ content.name }}</h1>
 {% endblock banner_header %}
 
-
-{% block banner %}
-    {% if is_mobile %}
-        <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}">
-    {% else %}
-        <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
-    {% endif %}
-{% endblock banner %}
 
 {% block content-navigation-list %}
     <ul class="navigation-list">
         {% for list_item in content_navigation_list %}
-            <li class="{% if view_type == 'service' and content.pk == list_item.pk %} active {% endif %}">
-                {% if view_type == 'event'  %}
-                    <a href="{% url 'advisory_services:event' content.pk list_item.pk list_item.slug %}">{{ list_item.name }}</a>
-                {% else %}
-                    <a href="{% url 'advisory_services:service' list_item.department.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
-                {% endif %}
+            <li>
+                <a href="{% url 'advisory_services:service' content.pk content.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
             </li>
         {% endfor %}
     </ul>
 {% endblock content-navigation-list %}
 
 {% block content %}
-    {% if view_type == "service" %}
-        <h1> {{ content.name }} </h1>
-    {% endif %}
 
     <div>{{ content.content | safe | linebreaks }}</div>
-
-    {% if view_type == "service" and content.tags.all %}
-         <div class="tag-items">
-            {% for tag in content.tags.all %}
-                <span class="tag-item">
-                    <strong>
-                        {{ tag.name }}
-                    </strong>
-                </span>
-            {% endfor %}
-        </div>
-    {% endif %}
 
     {% block team %}
         <ul class="navigation-list team-list">
@@ -89,7 +58,7 @@
         {% if events_list %}
             {% for event in events_list %}
                 <li>
-                    <a href="{% url 'advisory_services:event' content.slug event.pk event.slug %}">{{ event.title }}</a>
+                    <a href="{% url 'advisory_services:event' content.pk content.slug event.pk event.slug %}">{{ event.title }}</a>
                 </li>
             {% endfor %}
         {% endif %}

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'advisory_services/css/style_base.css' %}">
 
 </head>
-<body class="{{ content.slug }}">
+<body class="{{ view_type }}">
     <section class="wrap-banner">
         <div class="container">
             <div class="fix-wrapper">
@@ -28,6 +28,11 @@
                 <div class="main-content">
                     <div class="content-holder right img-holder">
                         {% block banner %}
+                            {% if is_mobile %}
+                                <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}">
+                            {% else %}
+                                <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+                            {% endif %}
                         {% endblock banner %}
                     </div>
                 </div>
@@ -39,8 +44,8 @@
             <div class="fix-wrapper">
                 <aside class="left-sidebar">
                     <div class="content-holder left">
-                        {% block navigation-list %}
-                        {% endblock navigation-list %}
+                        {% block content-navigation-list %}
+                        {% endblock content-navigation-list %}
                     </div>
                 </aside>
                 <div class="main-content">
@@ -52,6 +57,28 @@
             </div>
         </div>
     </section>
+
+    {% if view_type == "department" %}
+        <section class="wrap-content wrap-events">
+            <div class="container">
+                <div class="fix-wrapper">
+                    <aside class="left-sidebar">
+                        <div class="content-holder left">
+                            {% block events-navigation-list %}
+                            {% endblock events-navigation-list %}
+                        </div>
+                    </aside>
+                    <div class="main-content">
+                        <div class="content-holder right">
+                            {% block events-content %}
+                            {% endblock events-content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
      <!--Scripts - start -->
     <script src="{% static 'advisory_services/js/vendors/jquery-3.5.1.min.js'%}"></script>
     <script src="{% static 'advisory_services/js/app.js' %}"></script>
