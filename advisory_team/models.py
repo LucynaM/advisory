@@ -30,6 +30,7 @@ class TeamMember(AdvisoryBaseModel):
     email = models.EmailField(unique=True)
     phone = models.IntegerField(unique=True, verbose_name=__('phone'))
     specializations = models.ManyToManyField(Specialization, related_name=__('team_members'), verbose_name=__('specializations'), null=True, blank=True)
+    html_id = models.CharField(max_length=128, verbose_name=__('html_id'), null=True, blank=True)
 
     @property
     def name(self):
@@ -40,6 +41,7 @@ class TeamMember(AdvisoryBaseModel):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(downcode('{} {}'.format(self.name, self.title)))
+        self.html_id = '{}{}'.format(downcode(self.first_name), downcode(self.last_name))
         super().save(*args, **kwargs)
 
     class Meta:

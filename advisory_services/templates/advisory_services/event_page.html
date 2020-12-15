@@ -1,5 +1,6 @@
 {% extends './_base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block banner_header %}
     <div><a href="{% url 'advisory_services:department' department.pk department.slug %}">{{ department.name }}</a></div>
@@ -7,19 +8,21 @@
 
 
 {% block content-navigation-list %}
-    <ul class="navigation-list">
-        {% for list_item in content_navigation_list %}
-            <li class="{% if content.pk == list_item.pk %} active {% endif %}">
-                <a href="{% url 'advisory_services:event' department.pk department.slug list_item.pk list_item.slug %}">{{ list_item.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% if content_navigation_list %}
+        <h2>{% translate 'Wydarzenia' %}</h2>
+        <ul class="navigation-list">
+            {% for list_item in content_navigation_list %}
+                <li class="{% if content.pk == list_item.pk %} active {% endif %}">
+                    <a href="{% url 'advisory_services:event' department.pk department.slug list_item.pk list_item.slug %}">{{ list_item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock content-navigation-list %}
 
 {% block content %}
 
     <h1> {{ content.title }} </h1>
-
 
     <div>{{ content.content | safe | linebreaks }}</div>
 

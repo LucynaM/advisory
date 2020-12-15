@@ -53,8 +53,8 @@ class ServicePage(View):
 
 
 class EventPage(View):
-    def get(self, request, dept_pk, dept_slug, pk, slug):
 
+    def get(self, request, dept_pk, dept_slug, pk, slug):
         content = Events.objects.get(pk=pk, slug=slug)
         department = Department.objects.get(pk=dept_pk, slug=dept_slug)
         events_list = department.events.all().order_by('-creation_date')
@@ -73,9 +73,10 @@ class EventPage(View):
 
         return render(request, 'advisory_services/event_page.html', ctx)
 
-class TeamPage(View):
-    def get(self, request, dept_pk, dept_slug):
 
+class TeamPage(View):
+
+    def get(self, request, dept_pk, dept_slug):
         department = Department.objects.get(pk=dept_pk, slug=dept_slug)
         team_members_list = department.team_members.all()
 
@@ -88,7 +89,6 @@ class TeamPage(View):
             'department': department,
             'is_mobile': is_mobile,
             'view_type': view_type
-
         }
 
         return render(request, 'advisory_services/team_page.html', ctx)
