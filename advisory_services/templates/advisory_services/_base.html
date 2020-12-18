@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <section class="wrap-banner">
+    <section class="wrap-banner {{ view_type }}">
         <div class="container">
             <div class="fix-wrapper">
                 <aside class="left-sidebar">
@@ -30,9 +30,9 @@
                     <div class="content-holder right img-holder">
                         {% block banner %}
                             {% if is_mobile %}
-                                <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}">
+                                <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}" title="{{ content.name }}">
                             {% else %}
-                                <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+                                <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}" title="{{ content.name }}">
                             {% endif %}
                         {% endblock banner %}
                     </div>
@@ -60,7 +60,7 @@
     </section>
 
     {% if view_type == "department" %}
-        <section class="wrap-content wrap-events">
+        <section class="wrap-content wrap-events {{ view_type }}">
             <div class="container">
                 <div class="fix-wrapper">
                     <aside class="left-sidebar">

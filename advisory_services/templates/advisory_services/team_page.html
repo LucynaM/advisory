@@ -10,22 +10,29 @@
 
 {% block banner %}
     {% if is_mobile %}
-        <img src="{% static 'advisory_services/images/team_desktop.jpg' %}" alt="{{ department.name }}">
+        <img src="{% static 'advisory_services/images/team_desktop.jpg' %}" alt="{{ department.name }}" title="{{ department.name }}">
     {% else %}
-        <img src="{% static 'advisory_services/images/team_mobile.jpg' %}" alt="{{ department.name }}">
+        <img src="{% static 'advisory_services/images/team_mobile.jpg' %}" alt="{{ department.name }}" title="{{ department.name }}">
     {% endif %}
 {% endblock banner %}
 
 {% block content-navigation-list %}
     {% if content_navigation_list %}
-    <h2>{% translate 'Wydarzenia' %}</h2>
-        <ul class="navigation-list">
+    <div class="list-wrapper">
+
+        {% if is_mobile %}
+            <h2><a href="#TeamList" data-type="toggle">{% translate 'Zespół' %}</a></h2>
+        {% else %}
+        <h2>{% translate 'Zespół' %}</h2>
+        {% endif %}
+        <ul class="navigation-list {% if is_mobile %} hide {% endif %}" id="TeamList">
             {% for list_item in content_navigation_list %}
                 <li>
                     <a href="#{{ list_item.html_id }}">{{ list_item.name }}</a>
                 </li>
             {% endfor %}
         </ul>
+    </div>
     {% endif %}
 {% endblock content-navigation-list %}
 

@@ -1,0 +1,227 @@
+/* FONTS */
+@font-face {
+  font-display: swap;
+  font-family: 'source_sans_proregular';
+  src: url("../fonts/sourcesanspro-regular-webfont.eot");
+  src: url("../fonts/sourcesanspro-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourcesanspro-regular-webfont.woff2") format("woff2"), url("../fonts/sourcesanspro-regular-webfont.woff") format("woff"), url("../fonts/sourcesanspro-regular-webfont.ttf") format("truetype"), url("../fonts/sourcesanspro-regular-webfont.svg#source_sans_proregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-display: swap;
+  font-family: 'source_sans_prolight';
+  src: url("../fonts/sourcesanspro-light-webfont.eot");
+  src: url("../fonts/sourcesanspro-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourcesanspro-light-webfont.woff2") format("woff2"), url("../fonts/sourcesanspro-light-webfont.woff") format("woff"), url("../fonts/sourcesanspro-light-webfont.ttf") format("truetype"), url("../fonts/sourcesanspro-light-webfont.svg#source_sans_prolight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-display: swap;
+  font-family: 'source_sans_probold';
+  src: url("../fonts/sourcesanspro-bold-webfont.eot");
+  src: url("../fonts/sourcesanspro-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourcesanspro-bold-webfont.woff2") format("woff2"), url("../fonts/sourcesanspro-bold-webfont.woff") format("woff"), url("../fonts/sourcesanspro-bold-webfont.ttf") format("truetype"), url("../fonts/sourcesanspro-bold-webfont.svg#source_sans_probold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-display: swap;
+  font-family: 'source_sans_problack';
+  src: url("../fonts/sourcesanspro-black-webfont.eot");
+  src: url("../fonts/sourcesanspro-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourcesanspro-black-webfont.woff2") format("woff2"), url("../fonts/sourcesanspro-black-webfont.woff") format("woff"), url("../fonts/sourcesanspro-black-webfont.ttf") format("truetype"), url("../fonts/sourcesanspro-black-webfont.svg#source_sans_problack") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-display: swap;
+  font-family: 'source_serif_proregular';
+  src: url("../fonts/sourceserifpro-regular-webfont.eot");
+  src: url("../fonts/sourceserifpro-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourceserifpro-regular-webfont.woff2") format("woff2"), url("../fonts/sourceserifpro-regular-webfont.woff") format("woff"), url("../fonts/sourceserifpro-regular-webfont.ttf") format("truetype"), url("../fonts/sourceserifpro-regular-webfont.svg#source_serif_proregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-display: swap;
+  font-family: 'source_serif_probold';
+  src: url("../fonts/sourceserifpro-bold-webfont.eot");
+  src: url("../fonts/sourceserifpro-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourceserifpro-bold-webfont.woff2") format("woff2"), url("../fonts/sourceserifpro-bold-webfont.woff") format("woff"), url("../fonts/sourceserifpro-bold-webfont.ttf") format("truetype"), url("../fonts/sourceserifpro-bold-webfont.svg#source_serif_probold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-display: swap;
+  font-family: 'source_serif_problack';
+  src: url("../fonts/sourceserifpro-black-webfont.eot");
+  src: url("../fonts/sourceserifpro-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sourceserifpro-black-webfont.woff2") format("woff2"), url("../fonts/sourceserifpro-black-webfont.woff") format("woff"), url("../fonts/sourceserifpro-black-webfont.ttf") format("truetype"), url("../fonts/sourceserifpro-black-webfont.svg#source_serif_problack") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* GRID */
+/* COLORS */
+/* General settings - start*/
+body {
+  font-family: "source_sans_proregular", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 170%;
+  color: #000;
+  margin: 0; }
+
+p, ul, h1, h2 {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+h1, h2 {
+  margin-bottom: 20px; }
+
+strong {
+  font-family: "source_sans_probold", Arial, sans-serif; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
+
+ul {
+  list-style: none;
+  padding-left: 0; }
+  ul li {
+    display: block;
+    padding: 0 0 10px 0;
+    color: #0a1c27; }
+    ul li a {
+      text-decoration: none;
+      font-family: "source_sans_probold", Arial, sans-serif;
+      color: inherit; }
+    ul li.active {
+      color: #B51C3D; }
+  ul.team-list {
+    column-count: 2; }
+    ul.team-list .team-item {
+      display: flex; }
+      ul.team-list .team-item > div {
+        display: inline-flex;
+        flex-direction: column;
+        width: 60%; }
+        ul.team-list .team-item > div.team-item-img-holder {
+          width: 40%;
+          padding-right: 18px; }
+  ul.hide {
+    display: none; }
+
+.tag-items {
+  margin-top: 20px; }
+  .tag-items .tag-item {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 0.7; }
+
+section {
+  box-sizing: border-box;
+  border-bottom: 1px solid #0a1c27; }
+  section .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+    section .container .fix-wrapper {
+      flex-wrap: wrap;
+      display: inline-flex;
+      width: 100%; }
+      section .container .fix-wrapper > .left-sidebar, section .container .fix-wrapper > .main-content {
+        box-sizing: border-box;
+        float: left;
+        position: relative; }
+      section .container .fix-wrapper > .left-sidebar {
+        width: 25%;
+        border-right: 1px solid #0a1c27; }
+      section .container .fix-wrapper > .main-content {
+        width: 75%; }
+  section .content-holder {
+    padding-left: 9px;
+    padding-right: 9px; }
+  section.wrap-banner .content-holder {
+    height: 450px; }
+    section.wrap-banner .content-holder.left {
+      position: relative; }
+    section.wrap-banner .content-holder.right {
+      padding-left: 0;
+      padding-right: 0; }
+    section.wrap-banner .content-holder .header-holder {
+      border: 1px solid #0a1c27;
+      padding: 20px 60px;
+      background-color: #fff;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      text-transform: uppercase;
+      width: min-intrinsic;
+      /* old Chrome, Safari */
+      width: -webkit-min-content;
+      /* less old Chrome, Safari */
+      width: -moz-min-content;
+      /* current Firefox */
+      width: min-content; }
+      section.wrap-banner .content-holder .header-holder h1, section.wrap-banner .content-holder .header-holder div {
+        font-family: "source_sans_proregular", Arial, sans-serif;
+        font-size: 30px;
+        line-height: 150%;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 400; }
+      section.wrap-banner .content-holder .header-holder a {
+        color: inherit;
+        text-decoration: none;
+        font-size: inherit;
+        line-height: inherit; }
+  section.wrap-content .content-holder {
+    padding-top: 50px;
+    padding-bottom: 50px; }
+    section.wrap-content .content-holder.right {
+      padding-left: 50px; }
+      section.wrap-content .content-holder.right .list-wrapper {
+        margin-top: 50px; }
+
+@media (min-width: 768px) {
+  section .container {
+    width: 770px; } }
+
+@media (min-width: 992px) {
+  section .container {
+    width: 960px; } }
+
+@media (min-width: 1200px) {
+  section .container {
+    width: 1140px; } }
+
+@media (max-width: 768px) {
+  section .container .fix-wrapper > .left-sidebar {
+    width: 100%;
+    border-right: none; }
+  section .container .fix-wrapper > .main-content {
+    width: 100%; }
+  section.wrap-banner {
+    border-bottom: none; }
+    section.wrap-banner .container .fix-wrapper > .left-sidebar {
+      order: 2;
+      position: absolute; }
+    section.wrap-banner .content-holder.left {
+      position: relative; }
+    section.wrap-banner .content-holder.right img {
+      border-bottom: 1px solid #0a1c27; }
+  section.wrap-content .content-holder {
+    padding-top: 9px;
+    padding-bottom: 9px; }
+    section.wrap-content .content-holder.right {
+      padding-left: 9px; }
+  section.wrap-content.department .container .fix-wrapper > .left-sidebar {
+    order: 2; }
+  section.wrap-content.wrap-events .container .fix-wrapper > .left-sidebar {
+    order: 0; }
+  ul.team-list {
+    column-count: 1; } }

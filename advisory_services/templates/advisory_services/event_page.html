@@ -9,14 +9,20 @@
 
 {% block content-navigation-list %}
     {% if content_navigation_list %}
-        <h2>{% translate 'Wydarzenia' %}</h2>
-        <ul class="navigation-list">
-            {% for list_item in content_navigation_list %}
-                <li class="{% if content.pk == list_item.pk %} active {% endif %}">
-                    <a href="{% url 'advisory_services:event' department.pk department.slug list_item.pk list_item.slug %}">{{ list_item.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="list-wrapper">
+            {% if is_mobile %}
+                <h2><a href="#EventsList" data-type="toggle">{% translate 'Wydarzenia' %}</a></h2>
+            {% else %}
+                <h2>{% translate 'Wydarzenia' %}</h2>
+            {% endif %}
+            <ul class="navigation-list {% if is_mobile %} hide {% endif %}" id="EventsList">
+                {% for list_item in content_navigation_list %}
+                    <li class="{% if content.pk == list_item.pk %} active {% endif %}">
+                        <a href="{% url 'advisory_services:event' department.pk department.slug list_item.pk list_item.slug %}">{{ list_item.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 {% endblock content-navigation-list %}
 

@@ -9,14 +9,22 @@
 
 {% block content-navigation-list %}
     {% if content_navigation_list %}
-        <h2>{% translate 'Zakres usług' %}</h2>
-        <ul class="navigation-list">
-            {% for list_item in content_navigation_list %}
-                <li class="{% if content.pk == list_item.pk %} active {% endif %}">
-                    <a href="{% url 'advisory_services:service' list_item.department.pk list_item.department.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="list-wrapper">
+
+            {% if is_mobile %}
+                <h2><a href="#ServicesList" data-type="toggle">{% translate 'Zakres usług' %}</a></h2>
+            {% else %}
+            <h2>{% translate 'Zakres usług' %}</h2>
+            {% endif %}
+
+            <ul class="navigation-list {% if is_mobile %} hide {% endif %}" id="ServicesList">
+                {% for list_item in content_navigation_list %}
+                    <li class="{% if content.pk == list_item.pk %} active {% endif %}">
+                        <a href="{% url 'advisory_services:service' list_item.department.pk list_item.department.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 {% endblock content-navigation-list %}
 
@@ -39,23 +47,25 @@
 
     {% block team %}
         {% if team_members_list %}
-            <h2>{% translate 'Więcej informacji' %}</h2>
-            <ul class="navigation-list team-list">
-                {% for team_member in team_members_list %}
-                    <li>
-                        <a href="{% url 'advisory_services:team' content.department.pk content.department.slug %}">
-                            {% if team_member.academic_title %}
-                                {{ team_member.academic_title }}
-                            {% endif %}
+            <div class="list-wrapper">
+                <h2>{% translate 'Więcej informacji' %}</h2>
+                <ul class="navigation-list team-list">
+                    {% for team_member in team_members_list %}
+                        <li>
+                            <a href="{% url 'advisory_services:team' content.department.pk content.department.slug %}">
+                                {% if team_member.academic_title %}
+                                    {{ team_member.academic_title }}
+                                {% endif %}
 
-                            {{ team_member.name }} <br />
-                            {{ team_member.title }}
-                        </a> <br />
-                        tel: <a class="team-contact-info" href="tel:{{ team_member.phone }}">{{ team_member.phone }}</a><br />
-                        email: <a class="team-contact-info" href="mailto:{{ team_member.email }}">{{ team_member.email }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+                                {{ team_member.name }} <br />
+                                {{ team_member.title }}
+                            </a> <br />
+                            tel: <a class="team-contact-info" href="tel:{{ team_member.phone }}">{{ team_member.phone }}</a><br />
+                            email: <a class="team-contact-info" href="mailto:{{ team_member.email }}">{{ team_member.email }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
     {% endblock team %}
 
