@@ -77,7 +77,8 @@ h1, h2 {
   font-weight: normal; }
 
 strong {
-  font-family: "source_sans_probold", Arial, sans-serif; }
+  font-family: "source_sans_probold", Arial, sans-serif;
+  font-weight: normal; }
 
 a {
   text-decoration: none;
@@ -135,7 +136,7 @@ a.active .icon-open span:nth-of-type(3) {
     margin-right: 10px;
     font-size: 12px;
     text-transform: uppercase;
-    color: #333;
+    color: #555;
     letter-spacing: 0.7; }
 
 ul {
@@ -144,7 +145,7 @@ ul {
   ul li {
     display: block;
     padding: 0 0 10px 0;
-    color: #333;
+    color: #555;
     box-sizing: border-box;
     font-size: 14px; }
     ul li a {
@@ -154,7 +155,7 @@ ul {
       color: #0a1c27; }
       ul li a.team-contact-info {
         font-size: 14px;
-        color: #333; }
+        color: #555; }
     ul li.active a {
       color: #B51C3D; }
   ul.team-list > li {
@@ -166,7 +167,7 @@ ul {
     ul.team-list > li:nth-of-type(even) {
       padding-left: 9px; }
     ul.team-list > li .tag-items {
-      margin-top: 10px; }
+      margin-top: 0; }
       ul.team-list > li .tag-items .tag-item {
         text-transform: none; }
   ul.hide {
@@ -213,13 +214,16 @@ ul {
   font-family: "source_sans_probold", Arial, sans-serif; }
 
 .team-item {
-  display: flex; }
+  display: flex;
+  margin-bottom: 50px; }
+  .team-item:last-of-type {
+    margin-bottom: 0; }
   .team-item > div {
     display: inline-flex;
     flex-direction: column;
-    width: 60%; }
+    width: 70%; }
     .team-item > div.team-item-img-holder {
-      width: 40%;
+      width: 30%;
       padding-right: 18px; }
       .team-item > div.team-item-img-holder img {
         height: auto; }
@@ -275,7 +279,8 @@ section {
       /* less old Chrome, Safari */
       width: -moz-min-content;
       /* current Firefox */
-      width: min-content; }
+      width: min-content;
+      letter-spacing: 1px; }
       section.wrap-banner .content-holder .header-holder h1, section.wrap-banner .content-holder .header-holder div {
         color: #0a1c27;
         font-family: "source_sans_proregular", Arial, sans-serif;

@@ -48,14 +48,18 @@
                         <a href="{% url 'advisory_services:service' content.pk content.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
                     </li>
                 {% endfor %}
+
+                 <li>
+                    <a href="#" class="back-to">
+                        {% translate 'Zefir' %}
+                        <div class="arrow">
+                            <span class="arrow-shaft"></span>
+                            <span class="arrow-point"></span>
+                        </div>
+
+                    </a>
+                </li>
             </ul>
-            <div><a href="#" class="back-to">
-                {% translate 'Zefir' %}
-                <div class="arrow">
-                    <span class="arrow-shaft"></span>
-                    <span class="arrow-point"></span>
-                </div>
-            </a></div>
         </div>
     {% endif %}
 
@@ -126,10 +130,12 @@
     {% if events_list and events_list.0 %}
         <img src="{{ events_list.0.photo_desktop.url }}" alt="{{ events_list.0.title }}" title="{{ events_list.0.title }}">
         <div>
-            <h2>
-                {{ events_list.0.title }}
-                <a href="{% url 'advisory_services:event' content.pk content.slug events_list.0.pk events_list.0.slug %}" class="more">{% translate 'Więcej >>' %}</a>
-            </h2>
+            <a href="{% url 'advisory_services:event' content.pk content.slug events_list.0.pk events_list.0.slug %}">
+                <h2>
+                    {{ events_list.0.title }}
+                     <span class="more">{% translate 'Więcej >>' %}</span>
+                </h2>
+            </a>
         </div>
     {% endif %}
 {% endblock events-content %}

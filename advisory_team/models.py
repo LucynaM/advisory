@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as __
 from django.utils.text import slugify
 from downcode import downcode
 import re
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
@@ -22,6 +23,11 @@ class Specialization(models.Model):
         verbose_name_plural = __('Specializations')
 
 
+def only_int(value):
+    if not value.isdigit():
+        raise ValidationError(__('Pole powinno zawierać wyłącznie cyfry'))
+
+
 class TeamMember(AdvisoryBaseModel):
     first_name = models.CharField(max_length=64, verbose_name=__('first_name'))
     last_name = models.CharField(max_length=64, verbose_name=__('last_name'))
@@ -29,7 +35,7 @@ class TeamMember(AdvisoryBaseModel):
     academic_title = models.CharField(max_length=32, verbose_name=__('academic_title'), null=True, blank=True)
     title = models.CharField(max_length=255, verbose_name=__('title'))
     email = models.EmailField(unique=True)
-    phone = models.IntegerField(unique=True, verbose_name=__('phone'))
+    phone = models.CharField(max_length=32, unique=True, verbose_name=__('phone'), validators=[only_int])
     specializations = models.ManyToManyField(Specialization, related_name=__('team_members'), verbose_name=__('specializations'), null=True, blank=True)
     html_id = models.CharField(max_length=128, verbose_name=__('html_id'), null=True, blank=True)
 
