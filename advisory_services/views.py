@@ -36,6 +36,8 @@ class ServicePage(View):
         content = Service.objects.get(pk=pk, slug=slug)
         services_list = Service.objects.filter(department=content.department)
         team_members_list = content.team_members.all()
+        for team_member in team_members_list:
+            team_member.new_phone = team_member.change_phone()
 
         is_mobile = request.user_agent.is_mobile
         view_type = 'service'
@@ -79,6 +81,8 @@ class TeamPage(View):
     def get(self, request, dept_pk, dept_slug):
         department = Department.objects.get(pk=dept_pk, slug=dept_slug)
         team_members_list = department.team_members.all()
+        for team_member in team_members_list:
+            team_member.new_phone = team_member.change_phone()
 
         is_mobile = request.user_agent.is_mobile
         view_type = 'team_members'

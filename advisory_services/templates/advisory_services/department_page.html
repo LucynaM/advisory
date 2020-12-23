@@ -8,7 +8,38 @@
 
 
 {% block content-navigation-list %}
-    {% if content_navigation_list %}
+    {% if content_navigation_list and not is_mobile %}
+        <div class="list-wrapper">
+            <h2>{% translate 'Zakres usług' %}</h2>
+            <ul class="navigation-list">
+                {% for list_item in content_navigation_list %}
+                    <li>
+                        <a href="{% url 'advisory_services:service' content.pk content.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
+                    </li>
+                {% endfor %}
+
+                <li>
+                    <a href="#" class="back-to">
+                        {% translate 'Zefir' %}
+                        <div class="arrow">
+                            <span class="arrow-shaft"></span>
+                            <span class="arrow-point"></span>
+                        </div>
+
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    {% endif %}
+{% endblock content-navigation-list %}
+
+{% block content %}
+
+    <div>{{ content.content | safe | linebreaks }}</div>
+
+    {% if content_navigation_list and is_mobile %}
         <div class="list-wrapper">
             <h2>{% translate 'Zakres usług' %}</h2>
             <ul class="navigation-list">
@@ -18,13 +49,15 @@
                     </li>
                 {% endfor %}
             </ul>
+            <div><a href="#" class="back-to">
+                {% translate 'Zefir' %}
+                <div class="arrow">
+                    <span class="arrow-shaft"></span>
+                    <span class="arrow-point"></span>
+                </div>
+            </a></div>
         </div>
     {% endif %}
-{% endblock content-navigation-list %}
-
-{% block content %}
-
-    <div>{{ content.content | safe | linebreaks }}</div>
 
     {% block team %}
         {% if team_members_list %}
@@ -58,6 +91,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            <div class="clearfix"></div>
         {% endif %}
     {% endblock team %}
 
@@ -67,7 +101,13 @@
     {% if events_list %}
         <div class="list-wrapper">
             {% if is_mobile %}
-                <h2><a href="#EventsList" data-type="toggle">{% translate 'Wydarzenia' %}</a></h2>
+                <h2><a href="#EventsList" data-type="toggle">
+                    <div class="icon-open">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    {% translate 'Wydarzenia' %}</a></h2>
             {% else %}
                 <h2>{% translate 'Wydarzenia' %}</h2>
             {% endif %}
@@ -86,8 +126,10 @@
     {% if events_list and events_list.0 %}
         <img src="{{ events_list.0.photo_desktop.url }}" alt="{{ events_list.0.title }}" title="{{ events_list.0.title }}">
         <div>
-            {{ events_list.0.title }}
-            <a href="{% url 'advisory_services:event' content.pk content.slug events_list.0.pk events_list.0.slug %}" class="more">{% translate 'Więcej >>' %}</a>
+            <h2>
+                {{ events_list.0.title }}
+                <a href="{% url 'advisory_services:event' content.pk content.slug events_list.0.pk events_list.0.slug %}" class="more">{% translate 'Więcej >>' %}</a>
+            </h2>
         </div>
     {% endif %}
 {% endblock events-content %}

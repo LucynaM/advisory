@@ -12,7 +12,16 @@
         <div class="list-wrapper">
 
             {% if is_mobile %}
-                <h2><a href="#ServicesList" data-type="toggle">{% translate 'Zakres usług' %}</a></h2>
+                <h2>
+                    <a href="#ServicesList" data-type="toggle">
+                        <div class="icon-open">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        {% translate 'Zakres usług' %}
+                    </a>
+                </h2>
             {% else %}
             <h2>{% translate 'Zakres usług' %}</h2>
             {% endif %}
@@ -23,7 +32,25 @@
                         <a href="{% url 'advisory_services:service' list_item.department.pk list_item.department.slug list_item.pk list_item.slug %}">{{ list_item.name }}</a>
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="#" class="back-to">{% translate 'Home' %}
+                        <div class="arrow">
+                            <span class="arrow-shaft"></span>
+                            <span class="arrow-point"></span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="back-to">{% translate 'Zefir' %}
+                        <div class="arrow">
+                            <span class="arrow-shaft"></span>
+                            <span class="arrow-point"></span>
+                        </div>
+                    </a>
+                </li>
             </ul>
+
+
         </div>
     {% endif %}
 {% endblock content-navigation-list %}
@@ -60,12 +87,13 @@
                                 {{ team_member.name }} <br />
                                 {{ team_member.title }}
                             </a> <br />
-                            tel: <a class="team-contact-info" href="tel:{{ team_member.phone }}">{{ team_member.phone }}</a><br />
+                            tel: <a class="team-contact-info" href="tel:{{ team_member.phone }}">{{ team_member.new_phone }}</a><br />
                             email: <a class="team-contact-info" href="mailto:{{ team_member.email }}">{{ team_member.email }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
+            <div class="clearfix"></div>
         {% endif %}
     {% endblock team %}
 

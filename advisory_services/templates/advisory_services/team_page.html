@@ -21,7 +21,16 @@
     <div class="list-wrapper">
 
         {% if is_mobile %}
-            <h2><a href="#TeamList" data-type="toggle">{% translate 'Zespół' %}</a></h2>
+            <h2>
+                <a href="#TeamList" data-type="toggle">
+                    <div class="icon-open">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    {% translate 'Zespół' %}
+                </a>
+            </h2>
         {% else %}
         <h2>{% translate 'Zespół' %}</h2>
         {% endif %}
@@ -31,7 +40,24 @@
                     <a href="#{{ list_item.html_id }}">{{ list_item.name }}</a>
                 </li>
             {% endfor %}
+            <li>
+                <a href="#" class="back-to">{% translate 'Home' %}
+                    <div class="arrow">
+                        <span class="arrow-shaft"></span>
+                        <span class="arrow-point"></span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="back-to">{% translate 'Zefir' %}
+                    <div class="arrow">
+                        <span class="arrow-shaft"></span>
+                        <span class="arrow-point"></span>
+                    </div>
+                </a>
+            </li>
         </ul>
+
     </div>
     {% endif %}
 {% endblock content-navigation-list %}

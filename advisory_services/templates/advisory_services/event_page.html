@@ -11,7 +11,16 @@
     {% if content_navigation_list %}
         <div class="list-wrapper">
             {% if is_mobile %}
-                <h2><a href="#EventsList" data-type="toggle">{% translate 'Wydarzenia' %}</a></h2>
+                <h2>
+                    <a href="#EventsList" data-type="toggle">
+                        <div class="icon-open">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        {% translate 'Wydarzenia' %}
+                    </a>
+                </h2>
             {% else %}
                 <h2>{% translate 'Wydarzenia' %}</h2>
             {% endif %}
@@ -21,7 +30,24 @@
                         <a href="{% url 'advisory_services:event' department.pk department.slug list_item.pk list_item.slug %}">{{ list_item.title }}</a>
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="#" class="back-to">{% translate 'Home' %}
+                        <div class="arrow">
+                            <span class="arrow-shaft"></span>
+                            <span class="arrow-point"></span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="back-to">{% translate 'Zefir' %}
+                        <div class="arrow">
+                            <span class="arrow-shaft"></span>
+                            <span class="arrow-point"></span>
+                        </div>
+                    </a>
+                </li>
             </ul>
+
         </div>
     {% endif %}
 {% endblock content-navigation-list %}

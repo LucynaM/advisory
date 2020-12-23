@@ -3,6 +3,7 @@ from advisory_commons.models import AdvisoryBaseModel
 from django.utils.translation import gettext_lazy as __
 from django.utils.text import slugify
 from downcode import downcode
+import re
 
 
 # Create your models here.
@@ -35,6 +36,13 @@ class TeamMember(AdvisoryBaseModel):
     @property
     def name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def change_phone(self):
+        new_phone = str(self.phone)[::-1]
+        splited = re.findall('.{1,3}', new_phone)
+        joined = ' '.join(splited)[::-1]
+        return joined
+
 
     def __str__(self):
         return self.name
