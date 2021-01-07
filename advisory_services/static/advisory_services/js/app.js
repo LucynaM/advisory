@@ -29,4 +29,13 @@ $(document).ready(function() {
             $(href).slideUp('slow');
         }
     });
+
+    $('#TeamList a').on('click', function(e) {
+        const href = $(this).attr('href');
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            $("html, body").animate({ scrollTop: $(href).offset().top - 50}, 500);
+            return true;
+        }
+    });
 });

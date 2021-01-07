@@ -21,7 +21,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
     @staticmethod
     def get_department(obj):
-        return obj.name
+        return obj.department.name
 
     @staticmethod
     def get_team_members(obj):

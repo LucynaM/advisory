@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-04 20:18+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: advisory_commons/models.py:7
+msgid "tag"
+msgstr ""
+
+#: advisory_commons/models.py:17
+msgid "Tag"
+msgstr ""
+
+#: advisory_commons/models.py:18
+msgid "Tags"
+msgstr "Tagi"
+
+#: advisory_commons/models.py:22
+msgid "content"
+msgstr "treść"
+
+#: advisory_commons/models.py:23
+msgid "photo desktop"
+msgstr "zdjęcie desktop"
+
+#: advisory_commons/models.py:24
+msgid "photo mobile"
+msgstr "zdjęcie mobile"
+
+#: advisory_events/models.py:11 advisory_team/models.py:36
+msgid "title"
+msgstr "tytuł"
+
+#: advisory_events/models.py:12 advisory_services/models.py:13
+#: advisory_services/models.py:31 advisory_team/models.py:34
+msgid "slug"
+msgstr ""
+
+#: advisory_events/models.py:13
+msgid "creation_date"
+msgstr "data utworzenia"
+
+#: advisory_events/models.py:14 advisory_services/models.py:34
+msgid "tags"
+msgstr ""
+
+#: advisory_events/models.py:24 advisory_events/models.py:25
+msgid "Events"
+msgstr "Wydarzenia"
+
+#: advisory_services/models.py:12 advisory_services/models.py:30
+msgid "name"
+msgstr "nazwa"
+
+#: advisory_services/models.py:14 advisory_services/models.py:33
+msgid "team members"
+msgstr ""
+
+#: advisory_services/models.py:15 advisory_services/urls.py:29
+msgid "events"
+msgstr "wydarzenia"
+
+#: advisory_services/models.py:25
+msgid "Department"
+msgstr "Wydział"
+
+#: advisory_services/models.py:26
+msgid "Departments"
+msgstr "Wydziały"
+
+#: advisory_services/models.py:32
+msgid "department"
+msgstr "wydział"
+
+#: advisory_services/models.py:41
+msgid "Service"
+msgstr "Usługa"
+
+#: advisory_services/models.py:42
+msgid "Services"
+msgstr "Usługi"
+
+#: advisory_services/templates/advisory_services/department_page.html:13
+#: advisory_services/templates/advisory_services/department_page.html:44
+#: advisory_services/templates/advisory_services/service_page.html:22
+#: advisory_services/templates/advisory_services/service_page.html:26
+msgid "Zakres usług"
+msgstr ""
+
+#: advisory_services/templates/advisory_services/department_page.html:23
+#: advisory_services/templates/advisory_services/department_page.html:54
+#: advisory_services/templates/advisory_services/event_page.html:42
+#: advisory_services/templates/advisory_services/service_page.html:44
+#: advisory_services/templates/advisory_services/team_page.html:52
+msgid "Zefir"
+msgstr ""
+
+#: advisory_services/templates/advisory_services/department_page.html:70
+#: advisory_services/templates/advisory_services/team_page.html:31
+#: advisory_services/templates/advisory_services/team_page.html:35
+msgid "Zespół"
+msgstr ""
+
+#: advisory_services/templates/advisory_services/department_page.html:116
+#: advisory_services/templates/advisory_services/department_page.html:118
+#: advisory_services/templates/advisory_services/event_page.html:21
+#: advisory_services/templates/advisory_services/event_page.html:25
+msgid "Wydarzenia"
+msgstr ""
+
+#: advisory_services/templates/advisory_services/department_page.html:142
+msgid "Więcej >>"
+msgstr ""
+
+#: advisory_services/templates/advisory_services/event_page.html:34
+#: advisory_services/templates/advisory_services/service_page.html:36
+#: advisory_services/templates/advisory_services/team_page.html:44
+msgid "Home"
+msgstr ""
+
+#: advisory_services/templates/advisory_services/service_page.html:78
+msgid "Więcej informacji"
+msgstr ""
+
+#: advisory_services/urls.py:28
+msgid "services"
+msgstr "uslugi"
+
+#: advisory_services/urls.py:30
+msgid "team"
+msgstr "zespol"
+
+#: advisory_team/models.py:12
+msgid "specialization"
+msgstr "specjalizacja"
+
+#: advisory_team/models.py:22
+msgid "Specialization"
+msgstr "Specjalizacja"
+
+#: advisory_team/models.py:23
+msgid "Specializations"
+msgstr "Specjalizacje"
+
+#: advisory_team/models.py:28
+msgid "Pole powinno zawierać wyłącznie cyfry"
+msgstr ""
+
+#: advisory_team/models.py:32
+msgid "first_name"
+msgstr "imię"
+
+#: advisory_team/models.py:33
+msgid "last_name"
+msgstr "nazwisko"
+
+#: advisory_team/models.py:35
+msgid "academic_title"
+msgstr "tytuł naukowy"
+
+#: advisory_team/models.py:38
+msgid "phone"
+msgstr "telefon"
+
+#: advisory_team/models.py:39
+msgid "specializations"
+msgstr ""
+
+#: advisory_team/models.py:40
+msgid "html_id"
+msgstr ""
+
+#: advisory_team/models.py:62
+msgid "Team Member"
+msgstr "Członek zespołu"
+
+#: advisory_team/models.py:63
+msgid "Team Members"
+msgstr "Członkowie zespołu"

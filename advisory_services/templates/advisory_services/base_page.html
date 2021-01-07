@@ -12,9 +12,13 @@
 
 {% block banner %}
     {% if is_mobile %}
-        <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}">
+        {% if content.photo_mobile %}
+            <img src="{{ content.photo_mobile.url }}" alt="{{ content.name }}">
+        {% endif %}
     {% else %}
-        <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+        {% if content.photo_desktop %}
+            <img src="{{ content.photo_desktop.url }}" alt="{{ content.name }}">
+        {% endif %}
     {% endif %}
 {% endblock banner %}
 

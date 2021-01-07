@@ -31,7 +31,7 @@
                     </li>
                 {% endfor %}
                 <li>
-                    <a href="#" class="back-to">{% translate 'Home' %}
+                    <a href="{% url 'advisory_services:department' department.pk department.slug %}" class="back-to">{% translate 'Home' %}
                         <div class="arrow">
                             <span class="arrow-shaft"></span>
                             <span class="arrow-point"></span>
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="back-to">{% translate 'Zefir' %}
+                    <a href="https://www.zefir.com.pl/" class="back-to">{% translate 'Zefir' %}
                         <div class="arrow">
                             <span class="arrow-shaft"></span>
                             <span class="arrow-point"></span>

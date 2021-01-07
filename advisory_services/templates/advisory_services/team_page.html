@@ -41,7 +41,7 @@
                 </li>
             {% endfor %}
             <li>
-                <a href="#" class="back-to">{% translate 'Home' %}
+                <a href="{% url 'advisory_services:department' department.pk department.slug %}" class="back-to">{% translate 'Home' %}
                     <div class="arrow">
                         <span class="arrow-shaft"></span>
                         <span class="arrow-point"></span>
@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="back-to">{% translate 'Zefir' %}
+                <a href="https://www.zefir.com.pl/" class="back-to">{% translate 'Zefir' %}
                     <div class="arrow">
                         <span class="arrow-shaft"></span>
                         <span class="arrow-point"></span>
@@ -66,9 +66,7 @@
     {% for list_item in content_navigation_list %}
         <div class="team-item" id="{{ list_item.html_id }}">
             <div class="team-item-img-holder">
-                {% if is_mobile %}
-                    <img src="{{ list_item.photo_mobile.url }}" alt="{{ list_item.name }}" title="{{ list_item.name }}">
-                {% else %}
+                {% if list_item.photo_desktop %}
                     <img src="{{ list_item.photo_desktop.url }}" alt="{{ list_item.name }}" title="{{ list_item.name }}">
                 {% endif %}
             </div>

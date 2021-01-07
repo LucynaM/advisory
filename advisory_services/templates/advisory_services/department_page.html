@@ -19,7 +19,7 @@
                 {% endfor %}
 
                 <li>
-                    <a href="#" class="back-to">
+                    <a href="https://www.zefir.com.pl/" class="back-to">
                         {% translate 'Zefir' %}
                         <div class="arrow">
                             <span class="arrow-shaft"></span>
@@ -50,7 +50,7 @@
                 {% endfor %}
 
                  <li>
-                    <a href="#" class="back-to">
+                    <a href="https://www.zefir.com.pl/" class="back-to">
                         {% translate 'Zefir' %}
                         <div class="arrow">
                             <span class="arrow-shaft"></span>
@@ -66,12 +66,14 @@
     {% block team %}
         {% if team_members_list %}
             <div class="list-wrapper">
-                <h2>{% translate 'Zespół' %}</h2>
+                <a href="{% url 'advisory_services:team' content.pk content.slug %}">
+                    <h2>{% translate 'Zespół' %}</h2>
+                </a>
                 <ul class="navigation-list team-list">
 
                     {% for team_member in team_members_list %}
                         <li>
-                            <a href="{% url 'advisory_services:team' content.pk content.slug %}">
+                            <a href="{% url 'advisory_services:team' content.pk content.slug %}#{{ team_member.html_id }}">
                                 {% if team_member.academic_title %}
                                     {{ team_member.academic_title }}
                                 {% endif %}
@@ -128,14 +130,18 @@
 
 {% block events-content %}
     {% if events_list and events_list.0 %}
-        <img src="{{ events_list.0.photo_desktop.url }}" alt="{{ events_list.0.title }}" title="{{ events_list.0.title }}">
-        <div>
-            <a href="{% url 'advisory_services:event' content.pk content.slug events_list.0.pk events_list.0.slug %}">
+        <a href="{% url 'advisory_services:event' content.pk content.slug events_list.0.pk events_list.0.slug %}">
+
+            {% if events_list.0.photo_desktop %}
+                <img src="{{ events_list.0.photo_desktop.url }}" alt="{{ events_list.0.title }}" title="{{ events_list.0.title }}">
+            {% endif %}
+
+            <div>
                 <h2>
                     {{ events_list.0.title }}
                      <span class="more">{% translate 'Więcej >>' %}</span>
                 </h2>
-            </a>
-        </div>
+            </div>
+        </a>
     {% endif %}
 {% endblock events-content %}

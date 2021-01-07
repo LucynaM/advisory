@@ -33,7 +33,7 @@
                     </li>
                 {% endfor %}
                 <li>
-                    <a href="#" class="back-to">{% translate 'Home' %}
+                    <a href="{% url 'advisory_services:department' content.department.pk content.department.slug %}" class="back-to">{% translate 'Home' %}
                         <div class="arrow">
                             <span class="arrow-shaft"></span>
                             <span class="arrow-point"></span>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="back-to">{% translate 'Zefir' %}
+                    <a href="https://www.zefir.com.pl/" class="back-to">{% translate 'Zefir' %}
                         <div class="arrow">
                             <span class="arrow-shaft"></span>
                             <span class="arrow-point"></span>
@@ -79,7 +79,7 @@
                 <ul class="navigation-list team-list">
                     {% for team_member in team_members_list %}
                         <li>
-                            <a href="{% url 'advisory_services:team' content.department.pk content.department.slug %}">
+                            <a href="{% url 'advisory_services:team' content.department.pk content.department.slug %}#{{ team_member.html_id }}">
                                 {% if team_member.academic_title %}
                                     {{ team_member.academic_title }}
                                 {% endif %}
