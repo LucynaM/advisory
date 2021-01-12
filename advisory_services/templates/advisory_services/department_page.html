@@ -40,7 +40,7 @@
     <div>{{ content.content | safe | linebreaks }}</div>
 
     {% if content_navigation_list and is_mobile %}
-        <div class="list-wrapper">
+        <div class="list-wrapper mobile-red">
             <h2>{% translate 'Zakres usług' %}</h2>
             <ul class="navigation-list">
                 {% for list_item in content_navigation_list %}
@@ -65,7 +65,7 @@
 
     {% block team %}
         {% if team_members_list %}
-            <div class="list-wrapper">
+            <div class="list-wrapper {% if is_mobile %} mobile-red {% endif %}">
                 <a href="{% url 'advisory_services:team' content.pk content.slug %}">
                     <h2>{% translate 'Zespół' %}</h2>
                 </a>

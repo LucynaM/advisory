@@ -363,6 +363,8 @@ section {
     width: 50%; }
     .team-item > div.team-item-img-holder {
       width: 50%; }
+  .back-to {
+    margin-top: 0; }
   /*
     .team-item {
         display: block;
@@ -415,6 +417,8 @@ section {
         padding-left: 9px; }
         section.wrap-content .content-holder.right .list-wrapper {
           margin-top: 30px; }
+          section.wrap-content .content-holder.right .list-wrapper.mobile-red h2 {
+            color: #B51C3D; }
   ul.team-list > li {
     width: 100%; }
     ul.team-list > li:nth-of-type(odd) {
