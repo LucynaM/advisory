@@ -365,24 +365,6 @@ section {
       width: 50%; }
   .back-to {
     margin-top: 0; }
-  /*
-    .team-item {
-        display: block;
-        > div {
-            display: block;
-            width: 100%;
-            &.team-item-img-holder {
-                width: 100%;
-                padding-right: 0;
-                box-sizing: border-box;
-
-            }
-            &.team-item-content-holder {
-                padding-left: 0;
-            }
-        }
-    }
-    */
   section .container .fix-wrapper > .left-sidebar {
     width: 100%;
     border-right: none; }
@@ -438,3 +420,11 @@ section {
         box-sizing: border-box; }
       .team-item > div.team-item-content-holder {
         padding-left: 0; } }
+
+@media (max-width: 768px) and (orientation: landscape) {
+  html {
+    -webkit-text-size-adjust: 100%; }
+  section.wrap-banner .container .fix-wrapper > .main-content {
+    height: 85vh; }
+  section.wrap-banner .content-holder {
+    height: 100%; } }
